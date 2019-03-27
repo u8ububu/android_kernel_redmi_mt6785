@@ -3511,7 +3511,7 @@ static int binder_translate_fd_array(struct binder_fd_array_object *fda,
 	}
 	for (fdi = 0; fdi < fda->num_fds; fdi++) {
 		u32 fd;
-		int target_fd;
+
 		binder_size_t offset =
 			(uintptr_t)&fd_array[fdi] -
 			(uintptr_t)t->buffer->data;
