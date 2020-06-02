@@ -228,6 +228,13 @@ config MTK_COMBO_BT
 	depends on MTK_COMBO
 	help
 	  MTK BT /dev/stpbt driver for Bluedroid
+	  
+config MTK_COMBO_BT_MT76XX
+	bool "MT76xx SDIO BT driver"
+	depends on MTK_COMBO
+	default n
+	help
+		SDIO driver for MT76xx-like chips
 
 config MTK_COMBO_ANT
 	tristate "MediaTek Combo Chip ANT driver"
@@ -252,6 +259,44 @@ config MTK_COMBO_WIFI
 	depends on MTK_COMBO
 	select WIRELESS_EXT
 	select WEXT_PRIV
+	
+config MTK_COMBO_GEN4M
+	tristate "Mediatek combo chip GEN4M driver"
+	depends on MTK_COMBO_WIFI
+	default y
+	help
+		Use the GEN4M driver for Wi-Fi
+
+config CONFIG_MTK_COMBO_WIFI_HIF
+	string "HIF bus"
+	depends on MTK_COMBO_GEN4M
+	default "axi"
+	help
+		The bus to which the Wi-Fi block is connected
+
+config MTK_COMBO_CHIP_NAME
+	string "Wi-Fi adapter chip name"
+	depends on MTK_COMBO_GEN4M
+	default "CONNAC"
+	help
+		Name of the Wi-Fi block
+
+config WLAN_CHIP_ID
+	string "Mediatek Wi-Fi SoC id number"
+	depends on MTK_COMBO_GEN4M
+	default "6785"
+	help
+		The number of the SoC. Example: for Helio G90, aka MT6785, it is 6785
+
+config MTK_ANDROID_WMT
+	bool "MTK_ANDROID_WMT"
+	depends on MTK_COMBO_GEN4M
+	default y
+	
+config WIFI_IP_SET
+	string "Wi-Fi command queue version"
+	depends on MTK_COMBO_GEN4M
+	default "2"
 
 config MTK_WAPI_SUPPORT
 	bool "MTK_WAPI_SUPPORT"
