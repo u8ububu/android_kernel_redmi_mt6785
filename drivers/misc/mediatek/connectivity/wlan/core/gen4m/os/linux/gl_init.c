@@ -4788,8 +4788,9 @@ device_initcall(initWlan);
 
 #else
 
-module_init(initWlan);
-module_exit(exitWlan);
 
 #endif
+
+module_init(initWlan);
+module_exit(exitWlan);
 

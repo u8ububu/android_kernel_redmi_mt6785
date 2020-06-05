@@ -230,13 +230,13 @@ static void __exit gps_fw_log_exit(void)
 	pr_info("Done\n");
 }
 
-int mtk_gps_fw_log_init(void)
+int __init mtk_gps_fw_log_init(void)
 {
 	pr_info("gps fw log init begin");
 	return gps_fw_log_init();
 }
 
-void mtk_gps_fw_log_exit(void)
+void __exit mtk_gps_fw_log_exit(void)
 {
 	pr_info("gps fw log exit begin");
 	return gps_fw_log_exit();

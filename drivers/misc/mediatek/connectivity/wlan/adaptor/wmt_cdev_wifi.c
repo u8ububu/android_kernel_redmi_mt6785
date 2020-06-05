@@ -658,7 +658,7 @@ static void WIFI_exit(void)
 #endif
 }
 
-#ifdef MTK_WCN_BUILT_IN_DRIVER
+//#ifdef MTK_WCN_BUILT_IN_DRIVER
 
 int mtk_wcn_wmt_wifi_init(void)
 {
@@ -672,9 +672,9 @@ void mtk_wcn_wmt_wifi_exit(void)
 }
 EXPORT_SYMBOL(mtk_wcn_wmt_wifi_exit);
 
-#else
+//#else
 
 module_init(WIFI_init);
 module_exit(WIFI_exit);
 
-#endif
+//#endif

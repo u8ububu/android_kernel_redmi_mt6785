@@ -85,11 +85,11 @@ else
     ccflags-y += -DCFG_WIFI_IP_SET=1
 endif
 
-ifneq ($(filter MTK_WCN_REMOVE_KERNEL_MODULE,$(KBUILD_SUBDIR_CCFLAGS)),)
+#ifneq ($(filter MTK_WCN_REMOVE_KERNEL_MODULE,$(KBUILD_SUBDIR_CCFLAGS)),)
     ccflags-y += -DCFG_BUILT_IN_DRIVER=1
-else
-    ccflags-y += -DCFG_BUILT_IN_DRIVER=0
-endif
+#else
+#    ccflags-y += -DCFG_BUILT_IN_DRIVER=0
+#endif
 
 ifneq ($(findstring UT_TEST_MODE,$(MTK_COMBO_CHIP)),)
 ccflags-y:=$(filter-out -UUT_TEST_MODE,$(ccflags-y))
@@ -429,6 +429,7 @@ $(MODULE_NAME)-objs  += $(OS_OBJS)
 $(MODULE_NAME)-objs  += $(HIF_OBJS)
 $(MODULE_NAME)-objs  += $(MGMT_OBJS)
 $(MODULE_NAME)-objs  += $(CHIPS_OBJS)
+obj-$(CONFIG_WLAN_DRV_BUILD_IN) += $(MODULE_NAME).o
 
 ifneq ($(findstring UT_TEST_MODE,$(MTK_COMBO_CHIP)),)
 include $(src)/test/ut.make

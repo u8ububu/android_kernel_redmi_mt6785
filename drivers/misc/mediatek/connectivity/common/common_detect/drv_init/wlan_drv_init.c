@@ -58,6 +58,7 @@ int do_wlan_drv_init(int chip_id)
 
 	switch (chip_id) {
 	case 0x6765:
+	case 0x6785:
 	case 0x6632:
 		/* WLAN driver init */
 		ret = mtk_wcn_wlan_gen4_init();

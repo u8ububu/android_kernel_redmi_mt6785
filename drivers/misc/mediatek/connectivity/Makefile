@@ -50,11 +50,23 @@ endif
         subdir-ccflags-y += -D CFG_ENABLE_KEYWORD_EXCEPTION_MECHANISM
         
         obj-y += common/
-        obj-$(MTK_COMBO_WIFI) += wlan/adaptor/
-        obj-$(MTK_WLAN_GEN4M) += wlan/core/gen4m/
-        obj-$(MTK_COMBO_GPS) += gps/
-        obj-$(MTK_FMRADIO) += fmradio/
-        obj-$(MTK_COMBO_BT) += bt/mt66xx/
-        obj-$(MTK_BT_MT76XX) += bt/mt76xx/sdio/
+#        obj-$(MTK_COMBO_WIFI) += wlan/adaptor/
+#        obj-$(MTK_WLAN_GEN4M) += wlan/core/gen4m/
+#        obj-$(MTK_COMBO_GPS) += gps/
+#        obj-$(MTK_FMRADIO) += fmradio/
+#        obj-$(MTK_COMBO_BT) += bt/mt66xx/
+#        obj-$(MTK_BT_MT76XX) += bt/mt76xx/sdio/
+	export CONFIG_MTK_COMBO_WIFI_HIF=axi
+	export MTK_COMBO_CHIP=CONNAC
+	export WLAN_CHIP_ID=6785
+	export MTK_ANDROID_WMT=y
+	export WIFI_IP_SET=2
+	
+        obj-y += wlan/adaptor/
+        obj-y += wlan/core/gen4m/
+        obj-y += gps/
+        obj-n += fmradio/
+        obj-y += bt/mt66xx/
+        obj-n += bt/mt76xx/sdio/
         
 
